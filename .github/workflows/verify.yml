@@ -10,7 +10,7 @@ jobs:
       - name: Checkout Code
         uses: actions/checkout@v4
 
-      # THIS IS YOUR "TEST"
+      # test whether the file exists
       - name: Verify index.html exists
         run: |
           if [ -f "index.html" ]; then

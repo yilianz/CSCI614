@@ -1,0 +1,12 @@
+version: 1
+frontend:
+  phases:
+    build:
+      commands:
+        - echo "Deploying static site..."
+  artifacts:
+    baseDirectory: /       # host from root
+    files:
+      - '**/*'     # include all files in the root and subdirectories
+  cache:
+    paths: []

@@ -10,17 +10,17 @@
 <body>
   <main>
     Amplify Testing Website
-
+<h3>Test Lambda Integration</h3>
+      <p>This is a simple test to verify Lambda function integration.</p>
+      <button id="invoke-btn">Invoke Lambda</button>
+      <pre id="lambda-result" style="background:#f4f4f4;padding:10px;margin-top:10px;"></pre>
   </main>
     <footer>
       <p>Copyright &copy; 2020 <a href="http://yilianz.github.io">Yilian Zhang</a>
 
       </p>
 
-      <h3>Test Lambda Integration</h3>
-      <p>This is a simple test to verify Lambda function integration.</p>
-      <button id="invoke-btn">Invoke Lambda</button>
-      <pre id="lambda-result" style="background:#f4f4f4;padding:10px;margin-top:10px;"></pre>
+      
 
     </footer>
 
@@ -56,8 +56,8 @@
     }
 
     document.getElementById('invoke-btn').addEventListener('click', () => {
-      const data = invokeLambda({ message: 'Who are you?' });
-      alert("invoked lambda" + data.message);
+       invokeLambda({ message: 'Who are you?' });
+     
     });
   </script>
 </body>

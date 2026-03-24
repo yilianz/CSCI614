@@ -1,0 +1,23 @@
+name: CI/CD Pipeline Demo
+on:
+  push:
+    branches: [ main ]
+
+jobs:
+  quality-check:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout Code
+        uses: actions/checkout@v4
+
+      # THIS IS YOUR "TEST"
+      - name: Verify index.html exists
+        run: |
+          if [ -f "index.html" ]; then
+            echo "Test Passed: index.html found."
+          else
+            echo "Test Failed: index.html missing!"
+            exit 1
+          fi
+
+      

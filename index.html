@@ -30,7 +30,6 @@
   <script src="js/main.js"></script>
   <script>
     const LAMBDA_API_URL =  'https://oph58xvape.execute-api.us-east-2.amazonaws.com/testing/chat'; // e.g. https://xxxx.lambda-url.us-east-1.on.aws/
-
     async function invokeLambda(payload) {
       try {
         const response = await fetch(LAMBDA_API_URL, {

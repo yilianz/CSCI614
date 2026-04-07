@@ -1,0 +1,64 @@
+name: JavaScript Quality
+
+on:
+  push:
+    branches:
+      - main
+      - master
+  pull_request:
+
+jobs:
+  eslint:
+    name: Run ESLint
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@v4
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20
+
+      - name: Install ESLint dependencies
+        run: npm install --no-save eslint globals eslint-plugin-html
+
+      - name: Create ESLint config
+        run: |
+          cat <<'EOF' > eslint.config.mjs
+          import globals from 'globals';
+          import html from 'eslint-plugin-html';
+
+          export default [
+            {
+              files: ['**/*.js'],
+              languageOptions: {
+                ecmaVersion: 2022,
+                sourceType: 'script',
+                globals: globals.browser
+              },
+              rules: {
+                'no-console': 'warn',
+                'no-unused-vars': ['error', { argsIgnorePattern: '^_' }]
+              }
+            },
+            {
+              files: ['**/*.html'],
+              plugins: {
+                html
+              },
+              languageOptions: {
+                ecmaVersion: 2022,
+                sourceType: 'script',
+                globals: globals.browser
+              },
+              rules: {
+                'no-console': 'warn',
+                'no-unused-vars': ['error', { argsIgnorePattern: '^_' }]
+              }
+            }
+          ];
+          EOF
+
+      - name: Run ESLint
+        run: npx eslint . --ext .js,.html

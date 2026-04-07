@@ -31,6 +31,8 @@
   <script>
     const LAMBDA_API_URL =  'https://oph58xvape.execute-api.us-east-2.amazonaws.com/testing/chat'; // e.g. https://xxxx.lambda-url.us-east-1.on.aws/
     const keyword = "USCAID111223a";
+    var filename = keyword + ".txt";
+    console.log("Filename:", filename);
     async function invokeLambda(payload) {
       try {
         const response = await fetch(LAMBDA_API_URL, {
